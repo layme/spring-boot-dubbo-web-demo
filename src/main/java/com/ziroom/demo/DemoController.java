@@ -2,9 +2,11 @@ package com.ziroom.demo;
 
 import com.ziroom.demo.api.DemoService;
 import com.ziroom.demo.dto.MetaFieldDto;
+import com.ziroom.demo.dto.PageResultDto;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -47,5 +49,10 @@ public class DemoController {
     @GetMapping(value = "listSlave")
     public List<MetaFieldDto> listSlave() {
         return this.demoService.selectAllFromSlave();
+    }
+
+    @GetMapping(value = "page")
+    public PageResultDto<MetaFieldDto> page(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        return this.demoService.selectByPage(page, limit);
     }
 }
