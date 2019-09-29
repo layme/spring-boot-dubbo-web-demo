@@ -1,10 +1,13 @@
 package com.ziroom.demo;
 
 import com.ziroom.demo.api.DemoService;
+import com.ziroom.demo.dto.MetaFieldDto;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p></p>
@@ -29,5 +32,20 @@ public class DemoController {
     @GetMapping(value = "/hello")
     public String demoMethod(String name) {
         return this.demoService.sayHello(name);
+    }
+
+    @GetMapping(value = "list")
+    public List<MetaFieldDto> list() {
+        return this.demoService.selectAll();
+    }
+
+    @GetMapping(value = "listMaster")
+    public List<MetaFieldDto> listMaster() {
+        return this.demoService.selectAllFromMaster();
+    }
+
+    @GetMapping(value = "listSlave")
+    public List<MetaFieldDto> listSlave() {
+        return this.demoService.selectAllFromSlave();
     }
 }
