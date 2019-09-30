@@ -6,5 +6,3 @@ spring-boot-dubbo-web-demo
 spring boot 整合 dubbo 的 web 项目模板
 
 自定义日志配置，使用 spring boot 日志风格
-
-自定义日志配置，使用spring boot日志风格
